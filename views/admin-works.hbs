@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.7/css/dataTables.dataTables.css">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <title>Admin Panel - Portfolio</title>
+    <link rel="stylesheet" href="/admin.css">
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h2>Welcome {{adminName}}</h2>
+            <ul>
+                <li><a href="/login/admin-dashboard">Appointments</a></li>
+                <li><a href="/login/users">Users</a></li>
+                <li><a href="/login/services">Services</a></li>
+                <li><a href="/login/employees">Employees</a></li>
+                <li><a href="/login/admin-works">Portfolios</a></li>
+                <li><a href="/auth/logout" style="color: #ff4d4d;">Logout</a></li>
+            </ul>
+        </aside>
+
+        <main class="main">
+            <header class="topbar"><h1>Portfolios</h1></header>
+
+            <div class="table-container">
+                <table id="myTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                           <th>Name</th>
+                           <th>Description</th>
+                           <th>Work1</th>
+                           <th>Work2</th>
+                           <th>Work3</th>
+                           <th>Work4</th>
+                           <th>Work5</th>
+                           <th>Work6</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each employees}}
+                        <tr>
+                            <td data-label="ID">{{this.id}}</td>
+                            <td class="editable" data-field="name" data-label="Name" contenteditable="true">{{this.name}}</td>
+                            <td class="editable" data-field="description" data-label="Description" contenteditable="true">{{this.description}}</td>
+                            <td data-label="Work1">
+                                {{#if this.work1}}
+                                    <img
+                                         src="{{this.work1}}"
+                                         class="employee-thumb"
+                                         onerror="this.src='/images/favicon.png';">
+                                {{else}}
+                                    <img
+                                         src="/images/favicon.png"
+                                         class="employee-thumb">
+                                {{/if}}
+                                <select class="image-selector" data-field="work1" data-current="{{this.work1}}">
+                                    <option value="" hidden>-- Select image --</option>
+                                </select>
+                            </td>
+                            <td data-label="Work2">
+                                {{#if this.work2}}
+                                    <img
+                                         src="{{this.work2}}"
+                                         class="employee-thumb"
+                                         onerror="this.src='/images/favicon.png';">
+                                {{else}}
+                                    <img
+                                         src="/images/favicon.png"
+                                         class="employee-thumb">
+                                {{/if}}
+                                <select class="image-selector" data-field="work2" data-current="{{this.work2}}">
+                                    <option value="" hidden>-- Select image --</option>
+                                </select>
+                            </td>
+                            <td data-label="Work3">
+                                {{#if this.work3}}
+                                    <img
+                                         src="{{this.work3}}"
+                                         class="employee-thumb"
+                                         onerror="this.src='/images/favicon.png';">
+                                {{else}}
+                                    <img
+                                         src="/images/favicon.png"
+                                         class="employee-thumb">
+                                {{/if}}
+                                <select class="image-selector" data-field="work3" data-current="{{this.work3}}">
+                                    <option value="" hidden>-- Select image --</option>
+                                </select>
+                            </td>
+                            <td data-label="Work4">
+                                {{#if this.work4}}
+                                    <img
+                                         src="{{this.work4}}"
+                                         class="employee-thumb"
+                                         onerror="this.src='/images/favicon.png';">
+                                {{else}}
+                                    <img
+                                         src="/images/favicon.png"
+                                         class="employee-thumb">
+                                {{/if}}
+                                <select class="image-selector" data-field="work4" data-current="{{this.work4}}">
+                                    <option value="" hidden>-- Select image --</option>
+                                </select>
+                            </td>
+                            <td data-label="Work5">
+                                {{#if this.work5}}
+                                    <img
+                                         src="{{this.work5}}"
+                                         class="employee-thumb"
+                                         onerror="this.src='/images/favicon.png';">
+                                {{else}}
+                                    <img
+                                         src="/images/favicon.png"
+                                         class="employee-thumb">
+                                {{/if}}
+                                <select class="image-selector" data-field="work5" data-current="{{this.work5}}">
+                                    <option value="" hidden>-- Select image --</option>
+                                </select>
+                            </td>
+                            <td data-label="Work6">
+                                {{#if this.work6}}
+                                    <img
+                                         src="{{this.work6}}"
+                                         class="employee-thumb"
+                                         onerror="this.src='/images/favicon.png';">
+                                {{else}}
+                                    <img id="thumb-{{this.id}}"
+                                         src="/images/favicon.png"
+                                         class="employee-thumb">
+                                {{/if}}
+                                <select class="image-selector" data-field="work6" data-current="{{this.work6}}">
+                                    <option value="" hidden>-- Select image --</option>
+                                </select>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="button-container" style="margin-top:20px; display:flex; gap:10px;">
+                <button id="updateBtn" class="btn">Update Selected</button>
+                <button id="deleteBtn" class="btn" style="background:#ff4d4d;">Delete</button>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/2.3.7/js/dataTables.js"></script>
+
+<script src="/admin-works.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="stylesheet" href="/works.css">
+    <title>{{barber.name}}'s Portfolio</title>
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li class="nav-item nav-logo">Cuts & Hustle</li>
+            {{#if loggedOrNot}}
+            <li class="nav-item"><a href="/login/logged" class="nav-link">Back to Home</a></li>
+            {{else}}
+            <li class="nav-item"><a href="/login/guest" class="nav-link">Back to Home</a></li>
+            {{/if}}
+        </ul>
+    </nav>
+
+    <section class="hero-section fade-in">
+        <h1 class="hero-title">{{barber.name}}</h1>
+        <p class="lead-text">{{barber.speciality}} - {{barber.experience}} years experience</p>
+    </section>
+
+    <section class="profile-section">
+        <div class="container">
+            <div class="profile-header">
+                {{#if barber.pictures}}
+                    <img src="{{barber.pictures}}" class="main-profile-img" onerror="this.src='/images/favicon.png';">
+                {{else}}
+                    <img src="/images/favicon.png" class="main-profile-img">
+                {{/if}}
+                <div class="profile-info">
+                    <h2>About Me</h2>
+                    <p>{{barber.description}}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">My Works</h2>
+            <div class="works-grid">
+                {{#if barber.work1}}<div class="work-item"><img src="{{barber.work1}}" alt="Work 1"></div>{{/if}}
+                {{#if barber.work2}}<div class="work-item"><img src="{{barber.work2}}" alt="Work 2"></div>{{/if}}
+                {{#if barber.work3}}<div class="work-item"><img src="{{barber.work3}}" alt="Work 3"></div>{{/if}}
+                {{#if barber.work4}}<div class="work-item"><img src="{{barber.work4}}" alt="Work 4"></div>{{/if}}
+                {{#if barber.work5}}<div class="work-item"><img src="{{barber.work5}}" alt="Work 5"></div>{{/if}}
+                {{#if barber.work6}}<div class="work-item"><img src="{{barber.work6}}" alt="Work 6"></div>{{/if}}
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Cuts & Hustle Barbershop. All rights reserved.</p>
+    </footer>
+</body>
+</html>
